@@ -5,6 +5,7 @@ import pl.edu.vistula.firstrestapispring.product.domain.Product;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public class ProductRepository {
@@ -21,5 +22,9 @@ public class ProductRepository {
         map.put(counter, entity);
         counter++;
         return entity;
+    }
+
+    public Optional<Product> findById(Long id) {
+        return Optional.ofNullable(map.get(id));
     }
 }
