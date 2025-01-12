@@ -41,4 +41,9 @@ public class ProductService {
     public List<ProductResponse> findAll() {
         return productRepository.findAll().stream().map(productMapper::toProductResponse).collect(Collectors.toList());
     }
+
+    public void delete(Long id) {
+        Product product = productRepository.findById(id).orElseThrow(ProductExceptionSupplier.productNotFound(id));
+        productRepository.deleteById(product.getId());
+    }
 }

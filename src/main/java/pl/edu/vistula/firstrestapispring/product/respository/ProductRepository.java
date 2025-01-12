@@ -33,4 +33,8 @@ public class ProductRepository {
     public List<Product> findAll() {
         return new ArrayList<>(map.values());
     }
+
+    public void deleteById(Long id) {
+        map.remove(id);
+    }
 }
