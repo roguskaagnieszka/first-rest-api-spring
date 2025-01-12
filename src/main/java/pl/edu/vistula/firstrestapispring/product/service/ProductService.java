@@ -9,6 +9,9 @@ import pl.edu.vistula.firstrestapispring.product.respository.ProductRepository;
 import pl.edu.vistula.firstrestapispring.product.support.ProductExceptionSupplier;
 import pl.edu.vistula.firstrestapispring.product.support.ProductMapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
@@ -35,4 +38,7 @@ public class ProductService {
         return productMapper.toProductResponse(product);
     }
 
+    public List<ProductResponse> findAll() {
+        return productRepository.findAll().stream().map(productMapper::toProductResponse).collect(Collectors.toList());
+    }
 }
